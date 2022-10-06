@@ -9,7 +9,7 @@
   "scripts": {
     "start": "node ./www/server.js",
     "tsc": "npx tsc",
-    "dev": "npx ts-node-dev --respawn --transpile-only ./src/server.ts",
+    "dev": "npx ts-node-dev --respawn --transpileOnly ./src/server.ts",
     "prod": "npx tsc && node ./www/server.js",
     "clean": "rm -rf www/ || true",
     "deploy": "npm run build && eb list && eb use udagram-api-dev && eb deploy",
@@ -33,7 +33,7 @@
     "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.5.0",
-    "sequelize-typescript": "^0.6.9"
+    "sequelize-typescript": "^2.1.3"
   },
   "devDependencies": {
     "@types/bluebird": "^3.5.26",
