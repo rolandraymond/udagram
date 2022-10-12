@@ -71,4 +71,4 @@ workflows:
       - deploy:
           requires:
             - hold
-            -deploy
+            - deploy
