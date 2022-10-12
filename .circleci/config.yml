@@ -9,7 +9,7 @@ jobs:
   build:
     docker:
       # the base image can run most needed actions with orbs
-      - image: "cimg/base:stable"
+      - image: "cimg/node:14.15"
     steps:
       # install node and checkout code
        - node/install
@@ -43,6 +43,15 @@ jobs:
             npm run api:build
   # deploy step will run only after manual approval
   deploy:
+    docker:
+      - image: "cimg/base:stable"
+      # more setup needed for aws, node, elastic beanstalk
+      steps:
+      - node/install:
+          node-version: "14.15"
+      - eb/setup
+      - aws-cli/setup
+      - checkout
       - run:
           name: Deploy App
           # TODO: Install, build, deploy in both apps
