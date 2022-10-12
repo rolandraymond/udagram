@@ -60,8 +60,14 @@ workflows:
   udagram:
     jobs:
       - build
-workflows:
-  build_and_test:
-    jobs:
-      - build
-      - deploy
+      - hold:
+          filters:
+            branches:
+              only:
+                - master
+          type: approval
+          requires:
+            - build
+      - deploy:
+          requires:
+            - deploy
