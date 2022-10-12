@@ -69,4 +69,6 @@ workflows:
           requires:
             - build
       - deploy:
-          - deploy
+           requires:
+            - hold
+            - deploy
